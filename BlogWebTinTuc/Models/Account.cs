@@ -8,14 +8,18 @@ namespace BlogWebTinTuc.Models
 {
     public class Account
     {
-        [Required(ErrorMessage = "Username is Required.")]
+
+        [Display(Name = "Tên tài khoản")]
         [Key]
+        [Required(ErrorMessage = "Username is Required.")]
         public string Username { get; set; }
 
+        [Display(Name = "Mật khẩu")]
         [Required(ErrorMessage = "Password is Required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Display(Name = "ID Phân quyền")]
         [StringLength(10)]
         public string RoleID { get; set; }
     }

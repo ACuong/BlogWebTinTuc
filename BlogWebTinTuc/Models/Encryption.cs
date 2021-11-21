@@ -8,7 +8,7 @@ namespace BlogWebTinTuc.Models
 {
     public class Encryption
     {
-        public string PasswordEncryption(String pass)
+        public string PasswordEncryption(String pass) // ma hoa chuoi mat khau
         {
             return FormsAuthentication.HashPasswordForStoringInConfigFile(pass.Trim(), "MD5");
         }

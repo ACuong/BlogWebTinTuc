@@ -10,8 +10,10 @@ namespace BlogWebTinTuc.Models
     {
         [Key]
         [StringLength(10)]
+        [Display(Name = "ID chức vụ")]
         public string RoleID { get; set; }
 
+        [Display(Name = "Tên chức vụ")]
         [StringLength(10)]
         public string RoleName { get; set; }
     }

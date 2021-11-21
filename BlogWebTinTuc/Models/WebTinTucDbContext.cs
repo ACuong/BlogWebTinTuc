@@ -13,6 +13,8 @@ namespace BlogWebTinTuc.Models
         }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Category> Categorys { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

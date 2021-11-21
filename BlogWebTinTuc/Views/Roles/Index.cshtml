@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<BlogWebTinTuc.Models.Role>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Role";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Chức vụ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +25,9 @@
             @Html.DisplayFor(modelItem => item.RoleName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RoleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RoleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RoleID })
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.RoleID }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.RoleID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.RoleID })
         </td>
     </tr>
 }

@@ -1,0 +1,50 @@
+﻿@model BlogWebTinTuc.Models.Post
+
+@{
+    ViewBag.Title = "Bài viết";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Bài viết</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Textbody)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.Textbody, new { @class = "ckeditor" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID, "", new { @class = "text-danger" })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Trở lại danh sách", "Index")
+</p>

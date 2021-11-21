@@ -17,7 +17,7 @@ namespace BlogWebTinTuc.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { area = "Admin", controller = "HomeAdmin", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
