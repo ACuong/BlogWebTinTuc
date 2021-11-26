@@ -40,6 +40,7 @@ namespace BlogWebTinTuc.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
+
             string NewID = "";
             var emp = db.Posts.ToList().OrderByDescending(c => c.PostID);
             var countPost = db.Posts.Count();
@@ -64,14 +65,22 @@ namespace BlogWebTinTuc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PostID,Title,Url_image,Textbody,CategoryID")] Post post)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Posts.Add(post);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Posts.Add(post);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.CategoryID = new SelectList(db.Categorys, "CategoryID", "CategoryName", post.CategoryID);
+                ViewBag.CategoryID = new SelectList(db.Categorys, "CategoryID", "CategoryName", post.CategoryID);
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Khoa chinh bi trung");
+            }
+            
             return View(post);
         }
 

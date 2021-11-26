@@ -19,12 +19,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Trang chủ", "Index", "HomeAdmin", new { area = "" }, null)</li>   
+                    <li>@Html.ActionLink("Trang chủ", "Index", "HomeAdmin", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Danh mục", "Index", "Categories", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Bài viết", "Index", "Posts", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Chức vụ", "Index", "Roles", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Tạo tài khoản", "Register", "Account", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Đăng xuất", "Logout", "Account", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Chỉnh sửa tài khoản", "Index", "Acc", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
@@ -36,9 +37,14 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/ckeditor")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ckeditor")
+    <script src="/Content/ckfinder/ckfinder.js"></script>
+
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("jsFooter", required: false)
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>

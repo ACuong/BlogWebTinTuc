@@ -16,5 +16,7 @@ namespace BlogWebTinTuc.Models
         [Display(Name = "Tên chức vụ")]
         [StringLength(10)]
         public string RoleName { get; set; }
+
+        public ICollection<Account> Accounts { get; set; }
     }
 }

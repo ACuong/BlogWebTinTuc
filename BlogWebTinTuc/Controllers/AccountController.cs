@@ -33,6 +33,7 @@ namespace BlogWebTinTuc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Login", "Account");
             }
+            //ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", acc.RoleID);
             return View(acc);
         }
 

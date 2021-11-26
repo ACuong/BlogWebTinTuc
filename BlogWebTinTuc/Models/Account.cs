@@ -22,5 +22,6 @@ namespace BlogWebTinTuc.Models
         [Display(Name = "ID Phân quyền")]
         [StringLength(10)]
         public string RoleID { get; set; }
+        public Role Role { get; set; }
     }
 }

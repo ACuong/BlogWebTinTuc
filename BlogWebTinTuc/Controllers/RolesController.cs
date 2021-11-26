@@ -50,11 +50,18 @@ namespace BlogWebTinTuc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RoleID,RoleName")] Role role)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Roles.Add(role);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Roles.Add(role);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                ModelState.AddModelError("", "da xay ra loi");
             }
 
             return View(role);
