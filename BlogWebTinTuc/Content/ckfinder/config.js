@@ -14,4 +14,9 @@ CKFinder.customConfig = function( config )
 	// config.language = 'fr';
 	// config.removePlugins = 'basket';
 
+		// Define changes to default configuration here. For example:
+		// config.language = 'fr';
+		// config.uiColor = '#AADC6E';
+		
+
 };

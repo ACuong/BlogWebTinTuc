@@ -142,6 +142,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\TestCKfinderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,21 +182,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder.dll" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder.pdb" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_FileEditor.dll" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_FileEditor.pdb" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_ImageResize.dll" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_ImageResize.pdb" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_Watermark.dll" />
-    <Content Include="Content\ckfinder\bin\Debug\CKFinder_Watermark.pdb" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder.dll" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_FileEditor.dll" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_FileEditor.pdb" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_ImageResize.dll" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_ImageResize.pdb" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_Watermark.dll" />
-    <Content Include="Content\ckfinder\bin\Release\CKFinder_Watermark.pdb" />
     <Content Include="Content\ckfinder\changelog.txt" />
     <Content Include="Content\ckfinder\ckfinder.html" />
     <Content Include="Content\ckfinder\ckfinder.js" />
@@ -826,19 +812,6 @@
     <Content Include="Content\ckfinder\skins\v1\skin.js" />
     <Content Include="Content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\ckfinder\translations.txt" />
-    <Content Include="Content\ckfinder\_samples\aspx\popup.aspx" />
-    <Content Include="Content\ckfinder\_samples\aspx\popups.aspx" />
-    <Content Include="Content\ckfinder\_samples\aspx\standalone.aspx" />
-    <Content Include="Content\ckfinder\_samples\ckeditor.html" />
-    <Content Include="Content\ckfinder\_samples\index.html" />
-    <Content Include="Content\ckfinder\_samples\popup.html" />
-    <Content Include="Content\ckfinder\_samples\popups.html" />
-    <Content Include="Content\ckfinder\_samples\public_api.html" />
-    <Content Include="Content\ckfinder\_samples\sample.css" />
-    <Content Include="Content\ckfinder\_samples\skin_bootstrap.html" />
-    <Content Include="Content\ckfinder\_samples\skin_v1.html" />
-    <Content Include="Content\ckfinder\_samples\standalone.html" />
-    <Content Include="Content\ckfinder\_samples\standalone_v1.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1259,7 +1232,9 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\BTV\Data\" />
     <Folder Include="Assets\" />
+    <Folder Include="images\" />
     <Folder Include="UploadFiles\" />
+    <Folder Include="Views\TestCKfinder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

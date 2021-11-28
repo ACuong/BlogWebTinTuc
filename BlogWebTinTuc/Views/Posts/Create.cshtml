@@ -6,21 +6,27 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-@section jsFooter{
+
+@section jsFooter {
     <script>
-        $(document).ready(function (e) {
-            e.prevenDefault();
-           
-            $('#btnSeclectImage').on('click', function () {
+        $(document).ready(function () {
+            $('#btnSelectImage').on('click', function () {
+                console.log('abc');
                 var finder = new CKFinder();
                 finder.selectActionFunction = function (url) {
-                    $('txtImage').val(url);
+                    $('#Url_image').val(url);
                 };
                 finder.popup();
             })
-        })
+
+            CKEDITOR.replace('textShortDescription', {
+                customConfig: "/Scripts/ckeditor/config.js"
+            });
+        });
     </script>
 }
+
+
 
 <h2>Thêm bài viết</h2>
 
@@ -43,8 +49,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Url_image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Url_image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage" } })
-                <a id="btnSeclectImage" href="#">Chọn ảnh</a>
+                @Html.TextBoxFor(model => model.Url_image, new { htmlAttributes = new { @class = "form-control" }, id = "txtImage" })
+                <button type="button" id="btnSelectImage" href="#">Chọn ảnh</button>
                 @Html.ValidationMessageFor(model => model.Url_image, "", new { @class = "text-danger" })
             </div>
         </div>

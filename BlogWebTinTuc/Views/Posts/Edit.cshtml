@@ -8,12 +8,28 @@
 
 <h2>Sửa bài viết</h2>
 
+@section jsFooter {
+<script>
+    $(document).ready(function () {
+        $('#btnSelectImage').on('click', function () {
+            console.log('abc');
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#Url_image').val(url);
+            };
+            finder.popup();
+        })
+    });
+</script>
+}
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PostID)
@@ -29,7 +45,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Url_image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Url_image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Url_image, new { htmlAttributes = new { @class = "form-control" } })
+                <button type="button" id="btnSelectImage">Chọn ảnh</button>
                 @Html.ValidationMessageFor(model => model.Url_image, "", new { @class = "text-danger" })
             </div>
         </div>
