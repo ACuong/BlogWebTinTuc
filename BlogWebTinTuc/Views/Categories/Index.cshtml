@@ -11,6 +11,15 @@
 <p>
     @Html.ActionLink("Thêm danh mục", "Create")
 </p>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Title: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -19,17 +28,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.CategoryID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.CategoryID }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID })
+            </td>
+        </tr>
+    }
 
 </table>

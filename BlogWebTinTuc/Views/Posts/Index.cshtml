@@ -9,8 +9,17 @@
 <h2>Bài viết</h2>
 
 <p>
-    @Html.ActionLink("Tạo bài mới", "Create")
+    @Html.ActionLink("Thêm bài viết", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Posts", FormMethod.Get))
+{
+    <p>
+        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID","") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
+
 <table class="table">
     <tr>
 
@@ -48,3 +57,6 @@
     }
 
 </table>
+<div>
+    @Html.ActionLink("Xóa bộ lọc", "Index")
+</div>

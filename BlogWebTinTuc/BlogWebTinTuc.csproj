@@ -140,9 +140,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\TestCKfinderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,11 +166,20 @@
     <Compile Include="Migrations\202111230656529_Create_ForeignKey_Account.Designer.cs">
       <DependentUpon>202111230656529_Create_ForeignKey_Account.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111281358114_Add_Table_Movies.cs" />
+    <Compile Include="Migrations\202111281358114_Add_Table_Movies.Designer.cs">
+      <DependentUpon>202111281358114_Add_Table_Movies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111281629037_capnhatdtbase.cs" />
+    <Compile Include="Migrations\202111281629037_capnhatdtbase.Designer.cs">
+      <DependentUpon>202111281629037_capnhatdtbase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Encryption.cs" />
+    <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\UsersRoleProvider.cs" />
@@ -1226,6 +1235,11 @@
     <Content Include="Views\Acc\Details.cshtml" />
     <Content Include="Views\Acc\Edit.cshtml" />
     <Content Include="Views\Acc\Index.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1264,6 +1278,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111230656529_Create_ForeignKey_Account.resx">
       <DependentUpon>202111230656529_Create_ForeignKey_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111281358114_Add_Table_Movies.resx">
+      <DependentUpon>202111281358114_Add_Table_Movies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111281629037_capnhatdtbase.resx">
+      <DependentUpon>202111281629037_capnhatdtbase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BlogWebTinTuc.Models.Movies>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Title: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MoviesName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoviesName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MoviesID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MoviesID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MoviesID })
+            </td>
+        </tr>
+    }
+
+</table>

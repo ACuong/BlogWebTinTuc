@@ -10,135 +10,115 @@ using BlogWebTinTuc.Models;
 
 namespace BlogWebTinTuc.Controllers
 {
-    public class AccController : Controller
+    public class MoviesController : Controller
     {
         private WebTinTucDbContext db = new WebTinTucDbContext();
-        Encryption Encry = new Encryption();
-        // GET: Acc
-        public ActionResult Index(string searchString, string RoleID = "")
-        {       
-            var Accounts = from c in db.Accounts select c;
-            var Role = from c in db.Roles select c;
-            ViewBag.RoleID = new SelectList(Role, "RoleID", "RoleName"); 
 
-            var links = db.Accounts.Include(l => l.Role);
-           
-            if (!String.IsNullOrEmpty(searchString))
+        // GET: Movies
+        public ActionResult Index(string searchString)
+        {
+            var links = from l in db.Movies // lấy toàn bộ liên kết
+                         select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
             {
-                links = links.Where(s => s.Username.Contains(searchString));
+                links = links.Where(s => s.MoviesName.Contains(searchString)); //lọc theo chuỗi tìm kiếm
             }
 
-            if (RoleID != "")
-            {
-                links = links.Where(x => x.RoleID == RoleID);
-            }
-
-            return View(links.ToList());
+            return View(links); //trả về kết quả
         }
 
-        // GET: Acc/Details/5
+        // GET: Movies/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Movies movies = db.Movies.Find(id);
+            if (movies == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(movies);
         }
 
-        // GET: Acc/Create
+        // GET: Movies/Create
         public ActionResult Create()
         {
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
             return View();
         }
 
-        // POST: Acc/Create
+        // POST: Movies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,Password,RoleID")] Account account)
+        public ActionResult Create([Bind(Include = "MoviesID,MoviesName")] Movies movies)
         {
-            //try
-            //{
-                
-            //}
-            //catch
-            //{
-            //    ModelState.AddModelError("", "Khoa chinh bi trung");
-            //}
             if (ModelState.IsValid)
             {
-                account.Password = Encry.PasswordEncryption(account.Password);
-                db.Accounts.Add(account);
+                db.Movies.Add(movies);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(account); 
+            return View(movies);
         }
 
-        // GET: Acc/Edit/5
+        // GET: Movies/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Movies movies = db.Movies.Find(id);
+            if (movies == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
-            return View(account);
+            return View(movies);
         }
 
-        // POST: Acc/Edit/5
+        // POST: Movies/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,RoleID")] Account account)
+        public ActionResult Edit([Bind(Include = "MoviesID,MoviesName")] Movies movies)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                db.Entry(movies).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
-            return View(account);
+            return View(movies);
         }
 
-        // GET: Acc/Delete/5
+        // GET: Movies/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Movies movies = db.Movies.Find(id);
+            if (movies == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(movies);
         }
 
-        // POST: Acc/Delete/5
+        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            Movies movies = db.Movies.Find(id);
+            db.Movies.Remove(movies);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

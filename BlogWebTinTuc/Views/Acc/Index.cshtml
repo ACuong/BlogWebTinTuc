@@ -5,16 +5,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Tài Khoản</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo tài khoản", "Create")
 </p>
+
+
+@using (Html.BeginForm("Index", "Acc", FormMethod.Get))
+{
+    <p>
+        UserName: @Html.TextBox("SearchString") --- Chức vụ: @Html.DropDownList("RoleID", "All") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Role.RoleName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Username)
         </th>
@@ -24,23 +30,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Role.RoleName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Username)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Password)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Username }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Username }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Username })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Username }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Username }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Username })
+            </td>
+        </tr>
+    }
 
 </table>
+<div>
+    @Html.ActionLink("Xóa bộ lọc", "Index")
+</div>

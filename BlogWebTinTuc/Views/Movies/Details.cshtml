@@ -1,0 +1,27 @@
+﻿@model BlogWebTinTuc.Models.Movies
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movies</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviesName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoviesName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MoviesID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

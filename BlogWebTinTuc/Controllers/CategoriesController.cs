@@ -16,9 +16,18 @@ namespace BlogWebTinTuc.Controllers
         private WebTinTucDbContext db = new WebTinTucDbContext();
         AutoGenerateKey auKey = new AutoGenerateKey();
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Categorys.ToList());
+            var links = from l in db.Categorys // lấy toàn bộ liên kết
+                        select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.CategoryName.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+
+            return View(links); //trả về kết quả
+            //return View(db.Categorys.ToList());
         }
 
         // GET: Categories/Details/5

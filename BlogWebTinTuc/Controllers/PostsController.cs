@@ -16,10 +16,31 @@ namespace BlogWebTinTuc.Controllers
         private WebTinTucDbContext db = new WebTinTucDbContext();
         AutoGenerateKey auKey = new AutoGenerateKey();
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string CategoryID = "")
         {
-            var posts = db.Posts.Include(p => p.Category);
-            return View(posts.ToList());
+            //1. Tạo danh sách danh mục để hiển thị ở giao diện View thông qua DropDownList
+            var Post = from c in db.Posts select c;
+            var Category = from c in db.Categorys select c;
+            ViewBag.CategoryID = new SelectList(Category, "CategoryID", "CategoryName"); // danh sách Category
+
+            //2. Tạo câu truy vấn kết 2 bảng Link, Category bằng hàm Include do 2 bảng có ràng buộc
+            var links = db.Posts.Include(l => l.Category);
+
+            //3. Tìm kiếm chuỗi truy vấn
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                links = links.Where(s => s.Title.Contains(searchString));
+            }
+            //4. Tìm kiếm theo CategoryID
+            if(CategoryID != "")
+            {
+                links = links.Where(x => x.CategoryID == CategoryID);
+            }
+
+            return View(links.ToList());
+
+            //var posts = db.Posts.Include(p => p.Category);
+            //return View(posts.ToList());
         }
 
         // GET: Posts/Details/5
@@ -50,11 +71,11 @@ namespace BlogWebTinTuc.Controllers
             }
             else
             {
-                NewID = auKey.GenerateKey(emp.FirstOrDefault().CategoryID);
+                NewID = auKey.GenerateKey(emp.FirstOrDefault().PostID);
             }
             ViewBag.newPostID = NewID;
 
-            ViewBag.CategoryID = new SelectList(db.Categorys, "CategoryID", "CategoryName");
+            ViewBag.Categories = new SelectList(db.Categorys, "CategoryID", "CategoryName");
             return View();
         }
 
@@ -65,21 +86,14 @@ namespace BlogWebTinTuc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PostID,Title,Url_image,Textbody,CategoryID")] Post post)
         {
-            try
-            {
-                if (ModelState.IsValid)
+
+         if (ModelState.IsValid)
                 {
                     db.Posts.Add(post);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-
-                ViewBag.CategoryID = new SelectList(db.Categorys, "CategoryID", "CategoryName", post.CategoryID);
-            }
-            catch
-            {
-                ModelState.AddModelError("", "Khoa chinh bi trung");
-            }
+         ViewBag.CategoryID = new SelectList(db.Categorys, "CategoryID", "CategoryName", post.CategoryID);
             
             return View(post);
         }
