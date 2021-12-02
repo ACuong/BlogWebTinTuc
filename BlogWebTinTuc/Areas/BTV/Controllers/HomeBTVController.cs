@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BlogWebTinTuc.Areas.BTV.Controllers
 {
-    [Authorize (Roles ="BTV")]
+    [Authorize (Roles = "2")]
     public class HomeBTVController : Controller
     {
         // GET: BTV/HomeBTV

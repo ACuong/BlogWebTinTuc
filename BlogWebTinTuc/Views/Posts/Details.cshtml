@@ -2,8 +2,14 @@
 
 @{
     ViewBag.Title = "Bài viết";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["idUser"].ToString() == "admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/BTV/Views/Shared/_LayoutBTV.cshtml";
+    }
 }
 
 <h2>Bài viết</h2>
@@ -23,7 +29,8 @@
         </dt>
         
         <dd>
-            <image width="45%" align="left" border="0" src="@ViewBag.newUrl_image "></image>
+            
+            <image width="45%" align="left" src="@ViewBag.newUrl_image "></image>
         </dd>
 
         <dt>

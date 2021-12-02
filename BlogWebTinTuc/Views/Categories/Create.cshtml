@@ -2,8 +2,14 @@
 
 @{
     ViewBag.Title = "Danh mục";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["idUser"].ToString() == "admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/BTV/Views/Shared/_LayoutBTV.cshtml";
+    }
 }
 
 <h2>Tạo mới danh mục</h2>

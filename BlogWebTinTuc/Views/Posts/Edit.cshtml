@@ -2,8 +2,14 @@
 
 @{
     ViewBag.Title = "Bài viết";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["idUser"].ToString() == "admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/BTV/Views/Shared/_LayoutBTV.cshtml";
+    }
 }
 
 <h2>Sửa bài viết</h2>

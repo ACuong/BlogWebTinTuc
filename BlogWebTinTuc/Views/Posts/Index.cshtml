@@ -2,7 +2,14 @@
 
 @{
     ViewBag.Title = "Bài viết";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["idUser"].ToString() == "admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/BTV/Views/Shared/_LayoutBTV.cshtml";
+    }
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +22,7 @@
 @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
 {
     <p>
-        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID","") <input type="submit" value="Tìm kiếm" />
+        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID", "") <input type="submit" value="Tìm kiếm" />
     </p>
 }
 

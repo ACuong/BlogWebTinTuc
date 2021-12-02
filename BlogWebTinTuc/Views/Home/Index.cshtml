@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BlogWebTinTuc.Models.Post>
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang Chủ";
 }
 
-<div class="jumbotron">
-    <h2>Website Blog Tin Tức</h2>
+<div >
+    <h2>TIN TỨC</h2>
 </div>
 
 
@@ -15,15 +15,15 @@
             {
                 <th>
                     <div>
-                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 25%; height: 25%">
+                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
                     </div>
                     <div>
                         <div style="position: relative; z-index: 10;">
-                            <div class="mp-nav">
+                            <div>
                                 <span>by</span>
-                                <span>Cuong dep trai</span>
+                                <span>Cuong Nguyen</span>
                                 <span>/</span>
-                                <span>Breaking news</span>
+                                <span>Tin tức</span>
                             </div>
                         </div>
                         <div>
@@ -40,17 +40,17 @@
             {
                 <th>
                     <div>
-                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 25%; height: 25%">
+                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
                     </div>
                     <div>
-                        <div style="position: relative; z-index: 10;">
-                            <div class="mp-nav">
+                        <div>
+                            <div>
                                 <span>by</span>
-                                <span>Cuong Nguyen</span>
+                                <span>A Cuong</span>
                                 <span>/</span>
-                                <span>Breaking news</span>
+                                <span>Tin tức</span>
                             </div>
-                        </div>
+                        </div>  
                         <div>
                             <a href="@Url.Action("DetailNews", "Home" , new {id = post.PostID})">
                                 <span>@Html.DisplayFor(c => post.Title)</span>
