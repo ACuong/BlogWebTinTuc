@@ -55,6 +55,12 @@ namespace BlogWebTinTuc.Controllers
             {
                 return HttpNotFound();
             }
+
+            var emp = db.Posts.ToList().OrderByDescending(c => c.Url_image);
+           
+            ViewBag.newUrl_image = emp.FirstOrDefault().Url_image;
+            ViewBag.Texbody = emp.FirstOrDefault().Textbody;
+
             return View(post);
         }
 

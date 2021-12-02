@@ -1,0 +1,20 @@
+﻿@model BlogWebTinTuc.Models.Post
+
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 35px">
+    <div style="height: 60px">
+        <h3><b>@Model.Title</b></h3>
+    </div>
+    <div>
+        <img src="@Html.DisplayFor(modelItem => Model.Url_image)" alt="" style="width: 45%; height: 45%; margin-bottom: 23px">
+    </div>
+    <div>
+        <div style="">
+            @Html.Raw(Model.Textbody)
+        </div>
+    </div>
+</div>

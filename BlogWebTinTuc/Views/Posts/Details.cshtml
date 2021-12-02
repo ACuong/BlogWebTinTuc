@@ -15,15 +15,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            <b>@Html.DisplayFor(model => model.Title)</b>
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Url_image)
         </dt>
-
+        
         <dd>
-            @Html.DisplayFor(model => model.Url_image)
+            <image width="45%" align="left" border="0" src="@ViewBag.newUrl_image "></image>
         </dd>
 
         <dt>
@@ -31,20 +31,21 @@
         </dt>
 
         <dd>
+
             @Html.TextAreaFor(model => model.Textbody, new { @class = "ckeditor" })
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryID, "", new { @class = "text-danger" })
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CategoryID, "", new { @class = "text-danger" })
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.PostID }) |
-    @Html.ActionLink("Trở lại danh sách", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.PostID }) |
+        @Html.ActionLink("Trở lại danh sách", "Index")
+    </p>
