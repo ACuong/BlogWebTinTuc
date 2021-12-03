@@ -10,8 +10,8 @@ using BlogWebTinTuc.Models;
 
 namespace BlogWebTinTuc.Controllers
 {
-    //[Authorize(Roles = "1")]
-    [Authorize]
+    [Authorize(Roles = "1")]
+   
     public class RolesController : Controller
     {
         private WebTinTucDbContext db = new WebTinTucDbContext();

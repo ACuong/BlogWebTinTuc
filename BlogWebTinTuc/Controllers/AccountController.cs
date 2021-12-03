@@ -36,7 +36,7 @@ namespace BlogWebTinTuc.Controllers
             //ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", acc.RoleID);
             return View(acc);
         }
-
+        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             if (CheckSession() == 1)

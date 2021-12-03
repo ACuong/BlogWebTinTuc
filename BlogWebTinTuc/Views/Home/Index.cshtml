@@ -15,10 +15,12 @@
             {
                 <th>
                     <div>
-                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
+                        <a href="@Url.Action("DetailNews", "Home" , new {id = post.PostID})">
+                            <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
+                        </a>
                     </div>
                     <div>
-                        <div style="position: relative; z-index: 10;">
+                        <div>
                             <div>
                                 <span>by</span>
                                 <span>Cuong Nguyen</span>
@@ -40,7 +42,9 @@
             {
                 <th>
                     <div>
-                        <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
+                        <a href="@Url.Action("DetailNews", "Home" , new {id = post.PostID})">
+                            <img src="@Html.DisplayFor(c => post.Url_image)" alt="" style="width: 344px; height: 194px">
+                        </a>
                     </div>
                     <div>
                         <div>

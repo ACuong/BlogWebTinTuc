@@ -10,7 +10,7 @@ using BlogWebTinTuc.Models;
 
 namespace BlogWebTinTuc.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PostsController : Controller
     {
         private WebTinTucDbContext db = new WebTinTucDbContext();

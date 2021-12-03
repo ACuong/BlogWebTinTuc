@@ -5,15 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="margin-top: 35px">
-    <div style="height: 60px">
-        <h3><b>@Model.Title</b></h3>
+<div style="margin-top: 45px">
+    <div style="height: 45px">
+        <h2><b>@Model.Title</b></h2>
+    </div>
+    <div div style="height: 40px">
+        <i>
+            <span>by</span>
+            <span>Cuong Nguyen</span>
+            <span>/</span>
+            <span>Tin tức</span>
+        </i>
     </div>
     <div>
-        <img src="@Html.DisplayFor(modelItem => Model.Url_image)" alt="" style="width: 75%; height: 75%; margin-bottom: 23px" >
+        <img src="@Html.DisplayFor(modelItem => Model.Url_image)" alt="" style="width: 792px; height: 446px; margin-bottom: 23px">
     </div>
     <div>
         <div style="">
+
             @Html.Raw(Model.Textbody)
         </div>
     </div>

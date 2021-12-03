@@ -5,18 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>Account</h4>
+    <h4>Tài khoản</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Role.RoleName)
+            @Html.DisplayNameFor(model => model.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Role.RoleName)
+            @Html.DisplayFor(model => model.Username)
         </dd>
 
         <dt>
@@ -30,6 +30,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Username }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Username }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
 </p>

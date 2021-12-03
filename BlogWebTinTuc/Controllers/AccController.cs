@@ -10,6 +10,7 @@ using BlogWebTinTuc.Models;
 
 namespace BlogWebTinTuc.Controllers
 {
+    [Authorize(Roles = "1")]
     public class AccController : Controller
     {
         private WebTinTucDbContext db = new WebTinTucDbContext();
@@ -17,7 +18,7 @@ namespace BlogWebTinTuc.Controllers
         // GET: Acc
         public ActionResult Index(string searchString, string RoleID = "")
         {       
-            var Accounts = from c in db.Accounts select c;
+            //var Accounts = from c in db.Accounts select c;
             var Role = from c in db.Roles select c;
             ViewBag.RoleID = new SelectList(Role, "RoleID", "RoleName"); 
 
@@ -65,21 +66,21 @@ namespace BlogWebTinTuc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Username,Password,RoleID")] Account account)
         {
-            //try
-            //{
-                
-            //}
-            //catch
-            //{
-            //    ModelState.AddModelError("", "Khoa chinh bi trung");
-            //}
-            if (ModelState.IsValid)
+            try
             {
-                account.Password = Encry.PasswordEncryption(account.Password);
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    account.Password = Encry.PasswordEncryption(account.Password);
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch
+            {
+                ModelState.AddModelError("", "Các trường không được để trống");
+            }
+            
 
             return View(account); 
         }

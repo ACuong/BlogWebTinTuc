@@ -13,9 +13,11 @@ namespace BlogWebTinTuc.Models
         [Required(ErrorMessage = "PosID is Required.")]
         public string PostID { get; set; }
 
+        [Required(ErrorMessage = "Thiếu tiêu dề .")]
         [Display(Name ="Tiêu đề")]
         public string Title { get; set; }
 
+        
         [Display(Name = "Ảnh bìa")]
         public string Url_image { get; set; }
 
