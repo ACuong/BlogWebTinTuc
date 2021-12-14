@@ -22,7 +22,7 @@
 @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
 {
     <p>
-        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID", "") <input type="submit" value="Tìm kiếm" />
+        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID", "All") <input type="submit" value="Tìm kiếm" />
     </p>
 }
 

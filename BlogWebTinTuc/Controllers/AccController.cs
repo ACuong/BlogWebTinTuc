@@ -55,8 +55,15 @@ namespace BlogWebTinTuc.Controllers
         // GET: Acc/Create
         public ActionResult Create()
         {
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
-            return View();
+            try
+            {
+                ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "vui lòng kiểm tra lại thông tin tài khoản");
+            }
+                return View();
         }
 
         // POST: Acc/Create
@@ -78,7 +85,7 @@ namespace BlogWebTinTuc.Controllers
             }
             catch
             {
-                ModelState.AddModelError("", "Các trường không được để trống");
+                ModelState.AddModelError("", "Tên tài khoản đã tồn tại");
             }
             
 

@@ -22,7 +22,7 @@ namespace BlogWebTinTuc.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        [Authorize(Roles = "1")]
         public ActionResult Register(Account acc)
         {
             if (ModelState.IsValid)
@@ -63,7 +63,7 @@ namespace BlogWebTinTuc.Controllers
                     using (var db = new WebTinTucDbContext())
                     {
                         var passToMD5 = Encry.PasswordEncryption(acc.Password);
-                        var account = db.Accounts.Where(m => m.Username.Equals(acc.Username) && m.Password.Equals(passToMD5)).Count();
+                        var account = db.Accounts.Where(m => m.Username.Equals(acc.Username) && m.Password.Equals(passToMD5)).Count(); // tìm lấy giá trị account có username và mật khẩu bằng với tài khoản vừa nhập 
                         if (account == 1)
                         {
                             FormsAuthentication.SetAuthCookie(acc.Username, false);
@@ -100,6 +100,7 @@ namespace BlogWebTinTuc.Controllers
         //kiểm tra người dùng đăng nhập quyền gì
         private int CheckSession()
         {
+            
             using (var db = new WebTinTucDbContext())
             {
                 var user = HttpContext.Session["idUser"];
@@ -114,6 +115,7 @@ namespace BlogWebTinTuc.Controllers
                     else if (role.ToString() == "2")
                     {
                         return 2;
+                      
                     }
                 }
             }
